@@ -13,6 +13,7 @@
 <hr />
 
 <p><strong>Note:</strong> This project is in active development. We are continually refining the detection logic, expanding active response capabilities, and updating telemetry maps.</p>
+<img width="1905" height="979" alt="image" src="https://github.com/user-attachments/assets/8eb3f99c-b231-4c92-a6f6-fcfe59c01e54" />
 
 <p>Process-Sentry is a lightweight, high-performance event-driven Endpoint Detection and Response (EDR) tool designed to identify and neutralize zero-day exploits in real-time. Instead of relying on outdated static file signatures, it monitors the <strong>behavioral process tree</strong> of the operating system to intercept unauthorized execution patterns, such as suspicious shell spawning, LOLBAS attacks, and untrusted binaries execution.</p>
 
