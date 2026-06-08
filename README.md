@@ -28,14 +28,6 @@
   <li><strong>Real-time HUD Interface:</strong> Cyberpunk-inspired interactive web dashboard built with React and Tailwind CSS v4 for live telemetry streaming and alerts.</li>
 </ul>
 
-<h2>Architecture</h2>
-
-<pre>
-[Process Creation] ---> [WMI Subsystem] ---> [Python Agent (agent.py)] ---> [Python Server (server.py)] ---> [React Web HUD]
-       |                                              |                                |                          |
-  (Kernel/OS)                                   (SHA256 & Trust)                  (TCP Socket)                (SSE Stream)
-</pre>
-
 <h2>How to run</h2>
 
 <ol>
