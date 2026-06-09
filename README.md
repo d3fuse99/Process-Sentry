@@ -11,13 +11,14 @@
 </p>
 
 <p align="center">
-  <img src="assets/hud_normal.png" alt="PROCESS-SENTRY HUD" width="800" />
+<img width="2548" height="1341" alt="image" src="https://github.com/user-attachments/assets/59b7e65a-bb99-4175-97c5-d304e48452e0" />
+
 </p>
 
 <p><strong>Note:</strong> This project is in active development. We are continually refining the detection logic, expanding active response capabilities, and updating telemetry maps.</p>
 
 <p align="center">
-  <img src="assets/hud_alert.png" alt="PROCESS-SENTRY Critical Alert" width="600" />
+<img width="589" height="512" alt="image" src="https://github.com/user-attachments/assets/03b10f08-418e-4430-ae72-f17ec91290dc" />
 </p>
 
 <p>Process-Sentry is a lightweight, high-performance event-driven Endpoint Detection and Response (EDR) tool designed to identify and neutralize zero-day exploits in real-time. Instead of relying on outdated static file signatures, it monitors the <strong>behavioral process tree</strong> of the operating system to intercept unauthorized execution patterns, such as suspicious shell spawning, LOLBAS attacks, and untrusted binaries execution.</p>
