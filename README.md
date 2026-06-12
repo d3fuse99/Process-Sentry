@@ -5,19 +5,20 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-Beta%20v1.1.0-orange" alt="Status" />
+  <img src="https://img.shields.io/badge/Status-Beta%20v1.1-orange" alt="Status" />
   <img src="https://img.shields.io/badge/License-GPLv3-green" alt="License" />
   <img src="https://img.shields.io/badge/Platform-Windows-blue" alt="Platform" />
 </p>
 
 <p align="center">
-  <img src="assets/hud_normal.png" alt="PROCESS-SENTRY Telemetry Map" width="800" />
+<img width="2557" height="1317" alt="image" src="https://github.com/user-attachments/assets/0a3aa4cb-1b05-409a-b8cb-905ec19eecab" />
+
 </p>
 
 <p><strong>Note:</strong> This project is currently in the active Beta v1.1.0 phase. We are continually expanding the heuristic signatures, threat intelligence database, and automated mitigation capabilities.</p>
 
 <p align="center">
-  <img src="assets/hud_alert.png" alt="PROCESS-SENTRY Incident Alert" width="600" />
+<img width="589" height="512" alt="image" src="https://github.com/user-attachments/assets/d885bf73-ec5f-4518-a60a-6344ac48083d" />
 </p>
 
 <p>Process-Sentry is a lightweight, high-performance event-driven Endpoint Detection and Response (EDR) tool designed to identify, visualize, and neutralize zero-day exploits in real-time. Instead of relying on outdated static file signatures, it monitors the <strong>behavioral process tree</strong> of the operating system to intercept unauthorized execution patterns, such as suspicious shell spawning, LOLBAS attacks, and untrusted binaries execution.</p>
