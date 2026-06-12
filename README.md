@@ -1,40 +1,41 @@
 <h1>Process-Sentry 🛡️</h1>
 
 <p align="center">
-  <strong>Advanced event-driven behavioral EDR engine and automated exploit mitigation system for Windows.</strong>
+  <strong>Advanced event-driven EDR (Endpoint Detection & Response) & automated exploit mitigation suite for Windows.</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-In%20Development-orange" alt="Status" />
-  <img src="https://img.shields.io/badge/License-MIT-purple" alt="License" />
+  <img src="https://img.shields.io/badge/Status-Beta%20v1.1.0-orange" alt="Status" />
+  <img src="https://img.shields.io/badge/License-GPLv3-green" alt="License" />
   <img src="https://img.shields.io/badge/Platform-Windows-blue" alt="Platform" />
 </p>
 
 <p align="center">
-<img width="2548" height="1341" alt="image" src="https://github.com/user-attachments/assets/59b7e65a-bb99-4175-97c5-d304e48452e0" />
-
+  <img src="assets/hud_normal.png" alt="PROCESS-SENTRY Telemetry Map" width="800" />
 </p>
 
-<p><strong>Note:</strong> This project is in active development. We are continually refining the detection logic, expanding active response capabilities, and updating telemetry maps.</p>
+<p><strong>Note:</strong> This project is currently in the active Beta v1.1.0 phase. We are continually expanding the heuristic signatures, threat intelligence database, and automated mitigation capabilities.</p>
 
 <p align="center">
-<img width="589" height="512" alt="image" src="https://github.com/user-attachments/assets/03b10f08-418e-4430-ae72-f17ec91290dc" />
+  <img src="assets/hud_alert.png" alt="PROCESS-SENTRY Incident Alert" width="600" />
 </p>
 
-<p>Process-Sentry is a lightweight, high-performance event-driven Endpoint Detection and Response (EDR) tool designed to identify and neutralize zero-day exploits in real-time. Instead of relying on outdated static file signatures, it monitors the <strong>behavioral process tree</strong> of the operating system to intercept unauthorized execution patterns, such as suspicious shell spawning, LOLBAS attacks, and untrusted binaries execution.</p>
+<p>Process-Sentry is a lightweight, high-performance event-driven Endpoint Detection and Response (EDR) tool designed to identify, visualize, and neutralize zero-day exploits in real-time. Instead of relying on outdated static file signatures, it monitors the <strong>behavioral process tree</strong> of the operating system to intercept unauthorized execution patterns, such as suspicious shell spawning, LOLBAS attacks, and untrusted binaries execution.</p>
 
-<h2>How It Works: System Internals</h2>
+<h2>Advanced Incident Response Capabilities</h2>
 
-<p>Process-Sentry is designed on a zero-polling event-driven architecture that achieves enterprise-grade monitoring with minimal host footprint. Here is how the security pipeline operates:</p>
-
-<ol>
-  <li><strong>The Go Agent (agent.exe):</strong> Subscribes directly to Windows Management Instrumentation (WMI) process creation events. It acts as a passive listener, consuming 0% CPU at idle. It intercepts the new PID, Parent PID, execution path, and raw Command Line arguments.</li>
-  <li><strong>Security Verification:</strong> The agent immediately queries the Win32 <code>WinVerifyTrust</code> subsystem to verify the digital signature of the newly launched process and calculates its cryptographic SHA-256 hash.</li>
-  <li><strong>Telemetry Streaming:</strong> The agent packages this enriched metadata into a secure JSON payload and streams it via a local TCP socket to the Python Backend Server.</li>
-  <li><strong>Decision Engine:</strong> The Python Server processes the JSON payload against behavioral rules, command-line heuristics, and a threat intelligence blacklist.</li>
-  <li><strong>Active Response Loop:</strong> If an exploit or policy violation is detected, the server immediately sends a termination command with the target PID back to the Go Agent. The agent opens a process handle with <code>PROCESS_TERMINATE</code> rights and calls <code>TerminateProcess</code> to neutralize the threat in a fraction of a second.</li>
-  <li><strong>HUD Display:</strong> Concurrently, the server broadcasts the telemetry update via Server-Sent Events (SSE) to the React-based frontend dashboard.</li>
-</ol>
+<ul>
+  <li><strong>Zero-Polling Event Auditing:</strong> Subscribes directly to Windows Management Instrumentation (WMI) process creation events. It acts as a passive listener, consuming 0% CPU at idle while capturing even ultra-short-lived processes instantly.</li>
+  <li><strong>Active Response Engine:</strong> Features an automated incident response loop that instantly terminates dangerous process branches on detection using native Win32 <code>TerminateProcess</code> API.</li>
+  <li><strong>Heuristic Command Line Engine:</strong> Analyzes raw process execution arguments (e.g., PowerShell execution policy bypass, base64-encoded payloads, or network download strings) to stop script-based evasion.</li>
+  <li><strong>Static Analysis Hashing:</strong> Instantly calculates the SHA-256 cryptographic hash of every newly launched process binary for reputation lookups.</li>
+  <li><strong>Authenticode Signature Check:</strong> Interrogates the Win32 <code>WinVerifyTrust</code> subsystem to detect unsigned critical binaries and enforce security catalog trust rules.</li>
+  <li><strong>Interactive Forensic HUD:</strong> Cyberpunk-inspired interactive web dashboard built with React and Tailwind CSS v4 for live telemetry streaming and alerts.</li>
+  <li><strong>Host Network Isolation (New):</strong> Instantly isolate compromised hosts on-demand directly from the dashboard via Windows Firewall block rules, while preserving the EDR telemetry socket connection.</li>
+  <li><strong>Persistent Incident Database (New):</strong> Integrated local SQLite database to log and retrieve historical security incidents, accessible via the <code>Incident History</code> tab.</li>
+  <li><strong>Threat Quarantine (New):</strong> Automated mitigation that moves malicious binaries to a locked quarantine folder (<code>C:\ProgramData\ProcessSentry\Quarantine\</code>) with safe extensions (<code>.vir</code>) to prevent execution.</li>
+  <li><strong>External Rules Engine (New):</strong> Load process rules, suspicious parents, and dangerous keywords dynamically from an external <code>config.json</code> file.</li>
+</ul>
 
 <h2>Threat Detection Matrix</h2>
 
@@ -68,7 +69,7 @@
       <td>Known malware campaigns, ransomware, stealers, and dual-use tools (e.g., Mimikatz).</td>
     </tr>
   </tbody>
-</table >
+</table>
 
 <h2>Interactive Forensic Capabilities</h2>
 
@@ -94,22 +95,22 @@
 <h2>How to run</h2>
 
 <ol>
-  <li><strong>Prerequisites:</strong> Ensure you have Python 3.10+ and Node.js installed on your Windows system.</li>
+  <li><strong>Prerequisites:</strong> Ensure you have Python 3.10+, Go (Golang) 1.20+, and Node.js installed on your Windows system.</li>
   <li><strong>Install Dependencies:</strong> Run <code>npm.cmd install</code> in the project root to fetch frontend libraries.</li>
   <li><strong>Build Frontend:</strong> Execute <code>npm.cmd run build</code> to compile the dashboard into the static production folder.</li>
-  <li><strong>Initialize System:</strong> Double-click the <code>start.bat</code> file. It will automatically elevate itself to Administrator privileges to handle WMI event subscriptions and active process termination.</li>
-  <li><strong>Access Dashboard:</strong> Open your browser and navigate to <code>http://localhost:3000</code>.</li>
+  <li><strong>Build Go Agent:</strong> Execute <code>go build agent.go</code> in your terminal to compile the high-performance agent executable (<code>agent.exe</code>).</li>
+  <li><strong>One-Click Launch:</strong> Open your VS Code editor, navigate to <code>package.json</code>, hover over the <code>"sentry"</code> script, and click <strong>Run Script</strong> (or simply run <code>npm.cmd run sentry</code> in the terminal). This will automatically launch all three components with full Administrator privileges and open your default browser to <code>http://localhost:3000</code>.</li>
 </ol>
 
 <h2>Tech stack</h2>
 
 <ul>
   <li><strong>Go (Golang):</strong> High-performance, lightweight native Windows agent utilizing Win32 APIs for signature validation and active process termination.</li>
-  <li><strong>Python:</strong> Heuristic rule engine, reputation database, and multi-threaded socket/SSE web server.</li>
+  <li><strong>Python:</strong> Heuristic rule engine, reputation database, SQLite logging, and multi-threaded socket/SSE web server.</li>
   <li><strong>React / Vite:</strong> Fast, modern, responsive frontend architecture.</li>
   <li><strong>Tailwind CSS v4:</strong> Modern, high-performance cyber-ops styling engine.</li>
 </ul>
 
 <h2>License</h2>
 
-<p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
+<p>This project is licensed under the <strong>GNU General Public License v3 (GPLv3)</strong> - see the LICENSE file for details.</p>
