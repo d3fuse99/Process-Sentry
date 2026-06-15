@@ -72,7 +72,3 @@ To test and demonstrate the real-time active defense capabilities of Process-Sen
 * **Python**: Heuristic rule engine, cloud reputation database client, SQLite logging, and multi-threaded socket/SSE web server.
 * **React / Vite**: Fast, modern, responsive frontend architecture.
 * **Tailwind CSS v4**: Modern, high-performance cyber-ops styling engine.
-
-## License
-
-This project is licensed under the **GNU General Public License v3 (GPLv3)** - see the LICENSE file for details.
