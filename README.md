@@ -1,3 +1,6 @@
+<img width="2546" height="1316" alt="изображение" src="https://github.com/user-attachments/assets/57977a0b-fef2-4db3-b622-b4cc3abc7d4d" />
+
+
 Process-Sentry
 ==============
 
@@ -26,13 +29,4 @@ start.bat
 
 The script will automatically request administrator privileges (required for ETW events and Windows Firewall network isolation rules), host the EDR dashboard on port 3000, and launch the background telemetry agent.
 
-Project File Structure
-----------------------
-* dist - Directory containing compiled static frontend dashboard assets.
-* agent.exe - Compiled telemetry monitoring agent.
-* agent.go - Go source code for the monitoring agent.
-* server.py - Core Python backend serving REST APIs, SSE, and managing the SQLite database.
-* config.json - Security policy configuration, threat rules, allowlists, and VirusTotal API tokens.
-* start.bat - Self-elevating system launcher script.
-* stop.bat - Cleanup script to terminate active processes and restore network connectivity.
-* process_sentry.db - SQLite database containing event telemetry histories (generated dynamically on first launch).
+<img width="573" height="504" alt="изображение" src="https://github.com/user-attachments/assets/2adae09e-0f55-4708-a7e9-5f88319160d1" />
