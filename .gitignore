@@ -1,7 +1,0 @@
-node_modules/
-dist/
-process_sentry.db
-process_sentry.db-shm
-process_sentry.db-wal
-agent.exe
-.vscode/
